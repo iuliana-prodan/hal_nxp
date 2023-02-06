@@ -274,6 +274,11 @@ uint32_t UART_GetInstance(UART_Type *base);
 static inline void UART_SoftwareReset(UART_Type *base)
 {
     base->UCR2 &= ~UART_UCR2_SRST_MASK;
+
+#if defined(CONFIG_SOC_FAMILY_NXP_ADSP)
+    dcache_invalidate_all();
+#endif
+
     while ((base->UCR2 & UART_UCR2_SRST_MASK) == 0U)
     {
     }
