@@ -1547,3 +1547,12 @@ if(${MCUX_DEVICE} STREQUAL "MIMX8UX6")
     include(all_lib_device_MIMX8UX6)
 
 endif()
+
+if(${MCUX_DEVICE} STREQUAL "NXP_MIMX8M")
+    list(APPEND CMAKE_MODULE_PATH
+	    ${CMAKE_CURRENT_LIST_DIR}/devices/NXP_MIMX8M
+    )
+
+    include(all_lib_device_NXP_MIMX8M)
+
+endif()
