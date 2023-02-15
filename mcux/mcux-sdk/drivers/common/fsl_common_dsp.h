@@ -161,6 +161,18 @@ static inline void EnableGlobalIRQ(uint32_t primask)
 {
 }
 
+/*!
+ * @brief Invalidate all data cache
+ */
+static inline void dcache_invalidate_all(void)
+{
+#if defined(CONFIG_SOC_FAMILY_NXP_ADSP)
+#if XCHAL_DCACHE_SIZE > 0
+	xthal_dcache_all_invalidate();
+#endif
+#endif
+}
+
 #if defined(__cplusplus)
 }
 #endif
